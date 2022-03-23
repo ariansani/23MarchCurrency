@@ -29,7 +29,7 @@ public class CurrencyService {
     private static final Logger logger = LoggerFactory.getLogger(CurrencyService.class);
     private static final String URL = "https://free.currconv.com/api/v7/%s";
 
-    // SET FREE_CURR_CONV=ba070095c0ce04d0b86b
+    // SET FREE_CURR_CONV= your api key
     @Value("${free.curr.conv}")
     private String apiKey;
 
