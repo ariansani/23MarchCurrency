@@ -3,6 +3,7 @@ package VTTP2022.NUSISS.March23CurrConverter.models;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,6 +11,8 @@ import java.util.List;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
+import jakarta.json.JsonValue;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -86,6 +89,21 @@ public class Currency {
         }
 
         return cList;
+    }
+
+    public static Double convert(String json) throws IOException{
+
+        double convertedAmt=0;
+        try(InputStream is = new ByteArrayInputStream(json.getBytes())){
+            JsonReader r = Json.createReader(is);
+            JsonObject o = r.readObject();
+            Collection<JsonValue> values = o.values();
+            for(JsonValue value : values){
+                convertedAmt= Double.parseDouble(value.toString());
+            }
+        }
+
+        return convertedAmt;
     }
 
 }
