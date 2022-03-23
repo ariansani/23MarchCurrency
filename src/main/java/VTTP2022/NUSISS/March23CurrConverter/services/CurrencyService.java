@@ -54,14 +54,14 @@ public class CurrencyService {
                 .queryParam("apiKey", apiKey)
                 .toUriString();
 
-        //the charset doesn't seem to be working fine???
+ 
         RequestEntity req = RequestEntity
                 .get(currencyUrl)
                 .accept(MediaType.APPLICATION_JSON)
                 .acceptCharset(StandardCharsets.UTF_8)
                 .build();
 
-        //the charset also not working
+    
         RestTemplate template = new RestTemplate();
         template.getMessageConverters()
         .add(0, new StringHttpMessageConverter(StandardCharsets.UTF_8));
@@ -90,14 +90,14 @@ public class CurrencyService {
         .queryParam("apiKey", apiKey)
         .toUriString();
 
-        //the charset doesn't seem to be working fine???
+   
         RequestEntity req = RequestEntity
                 .get(convertUrl)
                 .accept(MediaType.APPLICATION_JSON)
                 .acceptCharset(StandardCharsets.UTF_8)
                 .build();
 
-        //the charset also not working
+
         RestTemplate template = new RestTemplate();
         template.getMessageConverters()
         .add(0, new StringHttpMessageConverter(StandardCharsets.UTF_8));

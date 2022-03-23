@@ -49,7 +49,7 @@ public class CurrencyController {
         // logger.info("This is from currency"+fromCurrency);
         // logger.info("This is to currency"+toCurrency);
         // logger.info("This is amount"+amount);
-        logger.info("This is result" +result);
+        // logger.info("This is result" +result);
 
         model.addAttribute("fromCurrency", fromCurrency);
         model.addAttribute("toCurrency", toCurrency);
