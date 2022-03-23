@@ -20,7 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import VTTP2022.NUSISS.March23CurrConverter.models.Currency;
 
-import org.apache.catalina.connector.Response;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,7 +45,7 @@ public class CurrencyService {
     }
 
     
-
+ 
 
 
     public List<Currency> getAllCurrencies() {
@@ -58,13 +58,10 @@ public class CurrencyService {
         RequestEntity req = RequestEntity
                 .get(currencyUrl)
                 .accept(MediaType.APPLICATION_JSON)
-                .acceptCharset(StandardCharsets.UTF_8)
                 .build();
 
     
         RestTemplate template = new RestTemplate();
-        template.getMessageConverters()
-        .add(0, new StringHttpMessageConverter(StandardCharsets.UTF_8));
 
         ResponseEntity<String> resp = null;
         
@@ -99,8 +96,6 @@ public class CurrencyService {
 
 
         RestTemplate template = new RestTemplate();
-        template.getMessageConverters()
-        .add(0, new StringHttpMessageConverter(StandardCharsets.UTF_8));
 
         ResponseEntity<String> resp = null;
         resp = template.exchange(req, String.class);

@@ -3,6 +3,7 @@ package VTTP2022.NUSISS.March23CurrConverter.models;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -66,7 +67,7 @@ public class Currency {
     public static List<Currency> create(String json) throws IOException{
 
         List<Currency> cList = new LinkedList<>();
-        try(InputStream is = new ByteArrayInputStream(json.getBytes())){
+        try(InputStream is = new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8))){
             JsonReader r = Json.createReader(is);
             JsonObject o = r.readObject();
             JsonObject allCountries = o.getJsonObject("results");
@@ -83,9 +84,7 @@ public class Currency {
                 c.currencySymbol = keyvalue.getString("currencySymbol");
                 c.id = keyvalue.getString("id");
                 cList.add(c);
-        
             }
-           
         }
 
         return cList;
@@ -94,7 +93,7 @@ public class Currency {
     public static Double convert(String json) throws IOException{
 
         double convertedAmt=0;
-        try(InputStream is = new ByteArrayInputStream(json.getBytes())){
+        try(InputStream is = new ByteArrayInputStream(json.getBytes(StandardCharsets.UTF_8))){
             JsonReader r = Json.createReader(is);
             JsonObject o = r.readObject();
             Collection<JsonValue> values = o.values();
