@@ -50,7 +50,7 @@ public class CurrencyController {
         // logger.info("This is to currency"+toCurrency);
         // logger.info("This is amount"+amount);
         // logger.info("This is result" +result);
-
+        result = result * amount;
         model.addAttribute("fromCurrency", fromCurrency);
         model.addAttribute("toCurrency", toCurrency);
         model.addAttribute("fromInitialAmount", amount);
